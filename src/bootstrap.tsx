@@ -5,6 +5,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 import Root from './Root';
 
 import { MountReturn, MountParameters } from './bootstrap.config';
+import { envConfig } from './configs';
 
 const mount = (
   element: Element,
@@ -33,7 +34,7 @@ const mount = (
   };
 };
 
-if (process.env.NODE_ENV === 'development') {
+if (envConfig.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#template');
 
   if (devRoot) {

@@ -1,3 +1,5 @@
+import { envConfig } from '.';
+
 export const urls = {
-  api: process.env.API,
+  api: envConfig.env.API,
 };
