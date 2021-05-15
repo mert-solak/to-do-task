@@ -1,12 +1,17 @@
 import React from 'react';
+import { Switch, Route, Router } from 'react-router-dom';
+
+import TasksPage from './pages/Tasks.page';
 
 import { Props } from './App.config';
 
-import styles from './App.module.scss';
-
-const App: React.FC<Props> = () => (
-  <div className={styles.container}>
-    <p>App</p>
+const App: React.FC<Props> = ({ history }) => (
+  <div>
+    <Router history={history}>
+      <Switch>
+        <Route path="/" component={TasksPage} />
+      </Switch>
+    </Router>
   </div>
 );
 

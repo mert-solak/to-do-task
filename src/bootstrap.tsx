@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 
-import App from './App';
+import Root from './Root';
 
 import { MountReturn, MountParameters } from './bootstrap.config';
 
@@ -20,7 +20,7 @@ const mount = (
     history.listen(onRemoteNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, element);
+  ReactDOM.render(<Root history={history} />, element);
 
   return {
     onHostNavigate({ pathname: nextPathname }: { pathname: string }) {
