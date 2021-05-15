@@ -4,7 +4,7 @@ module.exports = {
     './TaskApp': './src/bootstrap',
   },
   development: {
-    port: 8082,
+    port: 8081,
     url: 'http://localhost',
   },
   production: {},
