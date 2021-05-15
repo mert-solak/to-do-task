@@ -3,10 +3,11 @@ import logger from 'redux-logger';
 
 import { envConfig } from '../configs';
 import { reduxRootDefinitions } from '../definitions';
-import { userReducer } from './reducers';
+import { userReducer, taskReducer } from './reducers';
 
 const reducers: Record<keyof reduxRootDefinitions.RootState, any> = {
   userState: userReducer,
+  taskState: taskReducer,
 };
 
 const combinedReducers = combineReducers(reducers);
