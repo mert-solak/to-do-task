@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import TasksPage from './pages/Tasks.page';
+import TasksPage from './pages/tasks/Tasks.page';
 import { Props } from './App.config';
 import { userEvents } from './events';
 import { userActions } from './redux/actions';

@@ -5,7 +5,7 @@ import { momentHelper } from '../../helpers';
 
 import styles from './Task.module.scss';
 
-const Task: React.FC<Props> = ({ task }) => (
+export const Task: React.FC<Props> = ({ task }) => (
   <div className={styles.container}>
     <div className={styles.left}>
       <div className={styles.statusDot} />
