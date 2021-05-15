@@ -4,3 +4,4 @@ export * as taskDefinitions from './task.definitions';
 
 export * as reduxRootDefinitions from './redux-root.definition';
 export * as reduxUserDefinitions from './redux-user.definition';
+export * as reduxTaskDefinitions from './redux-task.definition';
