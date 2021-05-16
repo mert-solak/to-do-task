@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useContext, useEffect } from 'react';
 import { Switch, Route, Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { AxiosContext } from '@mertsolak/axios-helper';
 
-import TasksPage from './pages/tasks/Tasks.page';
 import { Props } from './App.config';
 import { userEvents } from './events';
 import { userActions } from './redux/actions';
+import { Loading } from './components';
+
+const TasksPageLazy = lazy(() => import('./pages/tasks/Tasks.page'));
 
 const App: React.FC<Props> = ({ history }) => {
+  const { isLoading } = useContext(AxiosContext);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,9 +24,13 @@ const App: React.FC<Props> = ({ history }) => {
   return (
     <div>
       <Router history={history}>
-        <Switch>
-          <Route path="/" component={TasksPage} />
-        </Switch>
+        <Loading isOpen={isLoading} />
+
+        <Suspense fallback={<Loading isOpen />}>
+          <Switch>
+            <Route path="/" component={TasksPageLazy} />
+          </Switch>
+        </Suspense>
       </Router>
     </div>
   );

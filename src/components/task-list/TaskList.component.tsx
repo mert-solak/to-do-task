@@ -8,7 +8,7 @@ import styles from './TaskList.module.scss';
 export const TaskList: React.FC<Props> = ({ taskList }) => (
   <div className={styles.container}>
     {taskList.map((task) => (
-      <Task task={task} />
+      <Task key={task._id} task={task} />
     ))}
   </div>
 );
