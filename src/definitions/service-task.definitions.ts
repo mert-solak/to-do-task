@@ -14,5 +14,5 @@ export type UpdateTaskReturn = taskDefinitions.Task;
 export type DeleteTaskInput = { _id: taskDefinitions.Task['_id'] };
 export type DeleteTaskReturn = taskDefinitions.Task;
 
-export type CreateTaskInput = Omit<taskDefinitions.Task, '_id'>;
+export type CreateTaskInput = Omit<taskDefinitions.Task, '_id' | 'createdAt' | 'updatedAt'>;
 export type CreateTaskReturn = taskDefinitions.Task;

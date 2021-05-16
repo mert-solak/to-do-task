@@ -56,6 +56,7 @@
 .userName {
   margin: 0;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .makeRed {
@@ -67,7 +68,7 @@
 }
 
 .makeBlue {
-  background-color: $blue-color;
+  background-color: $light-blue-color;
 }
 
 .makeBorderGreen {
