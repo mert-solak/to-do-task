@@ -6,6 +6,8 @@ import { TaskList } from '../../components';
 import { reduxRootDefinitions } from '../../definitions';
 import { taskService } from '../../services';
 import { taskActions } from '../../redux/actions';
+import { axiosConfig } from '../../configs';
+import { errorLocale } from '../../locales';
 
 const TasksPage: React.FC = () => {
   const axios = useAxios();
@@ -23,7 +25,9 @@ const TasksPage: React.FC = () => {
 
         dispatch(taskActions.setTasks(data));
       } catch (error) {
-        console.log(error); // TODO: Mert handle
+        if (!error?.config?.handled) {
+          axiosConfig.errorHandler(errorLocale.errorMessages.UNHANDLED_ERROR);
+        }
       }
     };
 
