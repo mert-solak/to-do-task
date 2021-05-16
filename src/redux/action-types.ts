@@ -1,3 +1,6 @@
 export const USER_SET_USER_NAME = 'USER_SET_USER_NAME';
 
 export const TASK_SET_TASKS = 'TASK_SET_TASKS';
+export const TASK_ADD_TASK = 'TASK_ADD_TASK';
+export const TASK_UPDATE_TASK = 'TASK_UPDATE_TASK';
+export const TASK_REMOVE_TASK = 'TASK_REMOVE_TASK';
