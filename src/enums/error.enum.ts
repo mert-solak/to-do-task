@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-shadow
-export enum TestEnum {
+export enum ErrorEnum {
   UNHANDLED_ERROR,
 
   VALIDATION_ERROR,
