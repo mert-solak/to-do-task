@@ -10,7 +10,7 @@ import { store } from './redux/store';
 
 const Root: React.FC<Props> = ({ history }) => (
   <Provider store={store}>
-    <AxiosProvider defaultOptions={axiosConfig.options}>
+    <AxiosProvider defaultOptions={axiosConfig.options} errorHandler={axiosConfig.errorHandler}>
       <App history={history} />
     </AxiosProvider>
   </Provider>
