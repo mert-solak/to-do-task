@@ -1,5 +1,12 @@
-import { taskDefinitions } from '../../definitions';
-
 export interface Props {
-  taskList: taskDefinitions.Task[];
+  taskList: {
+    _id: string;
+    name: string;
+    userName: string;
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+    finishesAt?: string;
+    description?: string;
+  }[];
 }
