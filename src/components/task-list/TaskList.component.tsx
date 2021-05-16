@@ -50,9 +50,8 @@ export const TaskList: React.FC<Props> = ({ taskList, status, userName }) => {
     <div className={styles.container}>
       <p className={styles.title}>{status}</p>
       <div className={styles.content} onDragOver={handleOnDragOver} onDrop={handleOnDrop}>
-        {taskList.map((task) => (
-          <Task key={task._id} task={task} userName={userName} />
-        ))}
+        {taskList.length > 0 &&
+          taskList.map((task) => <Task key={task._id} task={task} userName={userName} />)}
         <Button onClick={handleOnClickAddTask} fullWidth className={styles.addTask} startIcon={<Add />}>
           Add Task
         </Button>
