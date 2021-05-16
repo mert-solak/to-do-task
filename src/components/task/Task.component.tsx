@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { DragEventHandler } from 'react';
 import moment from 'moment';
 
 import { Props } from './Task.config';
@@ -41,8 +41,16 @@ export const Task: React.FC<Props> = ({ task, userName }) => {
     return styles.container;
   };
 
+  const handleOnDragStart: DragEventHandler<HTMLDivElement> = (event) => {
+    event.dataTransfer.setData('text/plain', task._id);
+  };
+
   return (
-    <div draggable={task.userName === userName} className={setContainerClass()}>
+    <div
+      onDragStart={handleOnDragStart}
+      draggable={task.userName === userName}
+      className={setContainerClass()}
+    >
       <div className={styles.left}>
         <div className={setStatusDotClass(task.finishesAt)} />
       </div>

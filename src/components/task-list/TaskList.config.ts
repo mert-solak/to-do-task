@@ -9,4 +9,6 @@ export interface Props {
     finishesAt?: string;
     description?: string;
   }[];
+  status: string;
+  userName: string;
 }
