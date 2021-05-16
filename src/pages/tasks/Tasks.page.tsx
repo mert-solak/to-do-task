@@ -58,9 +58,10 @@ const TasksPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {Object.keys(groupedTasks).map((status) => (
-        <TaskList key={status} taskList={groupedTasks[status]} status={status} />
-      ))}
+      {userName &&
+        Object.keys(groupedTasks).map((status) => (
+          <TaskList key={status} taskList={groupedTasks[status]} status={status} userName={userName} />
+        ))}
     </div>
   );
 };
