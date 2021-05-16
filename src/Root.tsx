@@ -1,11 +1,10 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { AxiosProvider } from '@mertsolak/axios-helper';
+import { Provider } from 'react-redux';
 
 import App from './App';
-
-import { axiosConfig } from './configs';
 import { Props } from './Root.config';
+import { axiosConfig } from './configs';
 import { store } from './redux/store';
 
 const Root: React.FC<Props> = ({ history }) => (

@@ -1,5 +1,4 @@
 import { eventHelper } from '../helpers';
-
 import { userDefinitions } from '../definitions';
 import { eventConfig } from '../configs';
 

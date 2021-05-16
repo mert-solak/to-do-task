@@ -7,10 +7,10 @@ import { Button } from '@material-ui/core';
 
 import { Props } from './TaskList.config';
 import { Task, Popup, TaskForm } from '../index';
-import { taskService } from '../../services';
 import { axiosConfig } from '../../configs';
 import { errorLocale } from '../../locales';
 import { taskActions } from '../../redux/actions';
+import { taskService } from '../../services';
 
 import styles from './TaskList.module.scss';
 

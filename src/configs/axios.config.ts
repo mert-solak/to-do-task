@@ -1,5 +1,5 @@
-import { snackbarEvents } from '../events';
 import { errorLocale } from '../locales';
+import { snackbarEvents } from '../events';
 
 export const options = {
   isLoadingBlocked: false,

@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useContext, useEffect } from 'react';
+import { AxiosContext } from '@mertsolak/axios-helper';
 import { Switch, Route, Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AxiosContext } from '@mertsolak/axios-helper';
 
+import { Loading } from './components';
 import { Props } from './App.config';
 import { loadingEvents, userEvents } from './events';
 import { userActions } from './redux/actions';
-import { Loading } from './components';
 
 import styles from './App.module.scss';
 

@@ -1,6 +1,7 @@
 import { AxiosInstance, AxiosPromise } from 'axios';
-import { urlConfig } from '../configs';
+
 import { serviceTaskDefinitions } from '../definitions';
+import { urlConfig } from '../configs';
 
 export const getTasks = (
   axios: AxiosInstance,

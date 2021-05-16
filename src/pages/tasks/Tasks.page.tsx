@@ -1,17 +1,17 @@
 import React, { ChangeEventHandler, KeyboardEventHandler, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useAxios } from '@mertsolak/axios-helper';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button, TextField } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
+import { GroupedTasks } from './Tasks.config';
 import { TaskList } from '../../components';
-import { reduxRootDefinitions, taskDefinitions } from '../../definitions';
-import { taskService } from '../../services';
-import { taskActions } from '../../redux/actions';
 import { axiosConfig } from '../../configs';
 import { errorLocale } from '../../locales';
-import { GroupedTasks } from './Tasks.config';
+import { reduxRootDefinitions, taskDefinitions } from '../../definitions';
+import { taskActions } from '../../redux/actions';
+import { taskService } from '../../services';
 
 import styles from './Tasks.module.scss';
 
@@ -39,7 +39,10 @@ const TasksPage: React.FC = () => {
 
   const handleOnKeyPressTextField: KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter' && status) {
-      setGroupedTasks({ ...groupedTasks, [status]: [] });
+      if (!groupedTasks[status]) {
+        setGroupedTasks({ ...groupedTasks, [status]: [] });
+      }
+      setIsAddStatusOpen(false);
     }
   };
 
@@ -93,11 +96,10 @@ const TasksPage: React.FC = () => {
           onChange={handleOnChangeTextField}
           label="Status"
           variant="outlined"
-          fullWidth
           required
         />
       ) : (
-        <Button className={styles.addStatus} onClick={handleOnClickAddStatus} fullWidth startIcon={<Add />}>
+        <Button className={styles.addStatus} onClick={handleOnClickAddStatus} startIcon={<Add />}>
           Add status
         </Button>
       )}

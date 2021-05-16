@@ -1,12 +1,12 @@
-import React, { DragEventHandler, useState } from 'react';
 import moment from 'moment';
+import React, { DragEventHandler, useState } from 'react';
 
+import { Popup, TaskForm } from '../index';
 import { Props } from './Task.config';
 import { momentHelper } from '../../helpers';
-import { Popup, TaskForm } from '../index';
+import { taskDefinitions } from '../../definitions';
 
 import styles from './Task.module.scss';
-import { taskDefinitions } from '../../definitions';
 
 export const Task: React.FC<Props> = ({ task, userName }) => {
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);

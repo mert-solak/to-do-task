@@ -1,21 +1,21 @@
-import React, { ChangeEventHandler, useState } from 'react';
 import moment from 'moment';
-
-import { TextField, Button } from '@material-ui/core';
+import React, { ChangeEventHandler, useState } from 'react';
 import { useAxios } from '@mertsolak/axios-helper';
 import { useDispatch } from 'react-redux';
 
+import { TextField, Button } from '@material-ui/core';
+
 import { Props } from './TaskForm.config';
-import { taskService } from '../../services';
-import { taskActions } from '../../redux/actions';
 import { axiosConfig } from '../../configs';
 import { errorLocale } from '../../locales';
+import { taskActions } from '../../redux/actions';
+import { taskDefinitions } from '../../definitions';
+import { taskService } from '../../services';
 
 import styles from './TaskForm.module.scss';
-import { taskDefinitions } from '../../definitions';
 
 export const TaskForm: React.FC<Props> = ({ task: taskProp, userName, status, onCreateUpdateFinish }) => {
-  const [task, setTask] = useState<Partial<taskDefinitions.Task>>(taskProp);
+  const [task, setTask] = useState<Partial<taskDefinitions.Task> | undefined>(taskProp);
 
   const axios = useAxios();
   const dispatch = useDispatch();
