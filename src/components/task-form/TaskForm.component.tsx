@@ -77,6 +77,32 @@ export const TaskForm: React.FC<Props> = ({ task: taskProp, userName, status, on
     }
   };
 
+  const setDefaultFinishesAt = (finishesAt?: string) => {
+    if (finishesAt) {
+      return moment(finishesAt).format('YYYY-MM-DD');
+    }
+
+    return '';
+  };
+
+  const handleOnClickDeleteButton = async () => {
+    if (taskProp) {
+      try {
+        const { data } = await taskService.deleteTask(axios, { _id: taskProp._id });
+
+        if (onCreateUpdateFinish) {
+          onCreateUpdateFinish();
+        }
+
+        dispatch(taskActions.removeTask(data._id));
+      } catch (error) {
+        if (!error?.config?.handled) {
+          axiosConfig.errorHandler(errorLocale.errorMessages.UNHANDLED_ERROR);
+        }
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.form}>
@@ -102,7 +128,7 @@ export const TaskForm: React.FC<Props> = ({ task: taskProp, userName, status, on
         <TextField
           className={styles.textField}
           onChange={handleOnDateChange}
-          defaultValue={taskProp?.finishesAt ? moment(taskProp.finishesAt).format() : ''}
+          defaultValue={setDefaultFinishesAt(taskProp?.finishesAt)}
           label="Deadline"
           type="date"
           InputLabelProps={{
@@ -112,9 +138,20 @@ export const TaskForm: React.FC<Props> = ({ task: taskProp, userName, status, on
         />
       </div>
       <div className={styles.buttons}>
-        <Button className={styles.cancelButton} variant="outlined">
+        <Button className={styles.addMarginToButton} onClick={onCreateUpdateFinish} variant="outlined">
           Cancel
         </Button>
+
+        {taskProp && (
+          <Button
+            className={styles.addMarginToButton}
+            onClick={handleOnClickDeleteButton}
+            variant="outlined"
+            color="secondary"
+          >
+            Delete
+          </Button>
+        )}
 
         <Button onClick={handleOnClickCreateUpdate} variant="contained" color="primary">
           {taskProp ? 'Update' : 'Create'}

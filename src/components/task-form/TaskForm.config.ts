@@ -13,5 +13,5 @@ export interface Props {
   task?: Task;
   userName: string;
   status: string;
-  onCreateUpdateFinish?: () => {};
+  onCreateUpdateFinish?: () => void;
 }

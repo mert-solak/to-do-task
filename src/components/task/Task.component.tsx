@@ -1,12 +1,15 @@
-import React, { DragEventHandler } from 'react';
+import React, { DragEventHandler, useState } from 'react';
 import moment from 'moment';
 
 import { Props } from './Task.config';
 import { momentHelper } from '../../helpers';
+import { Popup, TaskForm } from '../index';
 
 import styles from './Task.module.scss';
 
 export const Task: React.FC<Props> = ({ task, userName }) => {
+  const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
+
   const setStatusDotClass = (finishesAt: string | undefined) => {
     if (!finishesAt) {
       return styles.statusDot;
@@ -45,24 +48,48 @@ export const Task: React.FC<Props> = ({ task, userName }) => {
     event.dataTransfer.setData('text/plain', task._id);
   };
 
+  const handleOnClickTask = () => {
+    if (task.userName === userName) {
+      setIsTaskFormOpen(true);
+    }
+  };
+
+  const handleOnCreateUpdateFinish = () => {
+    setIsTaskFormOpen(false);
+  };
+
   return (
-    <div
-      onDragStart={handleOnDragStart}
-      draggable={task.userName === userName}
-      className={setContainerClass()}
-    >
-      <div className={styles.left}>
-        <div className={setStatusDotClass(task.finishesAt)} />
-      </div>
-      <div className={styles.middle}>
-        <p className={styles.name}>{task.name}</p>
-        {task.finishesAt && <p className={styles.date}>{momentHelper.formatStringDate(task.finishesAt)}</p>}
-      </div>
-      <div className={styles.right}>
-        <div className={setUserNameWrapperClass()}>
-          <p className={styles.userName}>{task.userName.charAt(0)}</p>
+    <div>
+      <div
+        className={setContainerClass()}
+        role="button"
+        tabIndex={-1}
+        onKeyDown={handleOnClickTask}
+        onClick={handleOnClickTask}
+        onDragStart={handleOnDragStart}
+        draggable={task.userName === userName}
+      >
+        <div className={styles.left}>
+          <div className={setStatusDotClass(task.finishesAt)} />
+        </div>
+        <div className={styles.middle}>
+          <p className={styles.name}>{task.name}</p>
+          {task.finishesAt && <p className={styles.date}>{momentHelper.formatStringDate(task.finishesAt)}</p>}
+        </div>
+        <div className={styles.right}>
+          <div className={setUserNameWrapperClass()}>
+            <p className={styles.userName}>{task.userName.charAt(0)}</p>
+          </div>
         </div>
       </div>
+      <Popup isDialogOpen={isTaskFormOpen} onDialogClose={setIsTaskFormOpen} title="Update Task">
+        <TaskForm
+          task={task}
+          userName={userName}
+          status={task.status}
+          onCreateUpdateFinish={handleOnCreateUpdateFinish}
+        />
+      </Popup>
     </div>
   );
 };

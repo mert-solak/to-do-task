@@ -1,6 +1,7 @@
 .container {
-  height: calc(100vh - #{$header-height} - 48px - 48px);
   margin-right: 24px;
+  height: calc(100vh - #{$header-height} - 48px - 48px);
+  min-width: 324px;
 }
 
 .title {
