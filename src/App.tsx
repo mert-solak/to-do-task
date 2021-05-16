@@ -8,6 +8,8 @@ import { loadingEvents, userEvents } from './events';
 import { userActions } from './redux/actions';
 import { Loading } from './components';
 
+import styles from './App.module.scss';
+
 const TasksPageLazy = lazy(() => import('./pages/tasks/Tasks.page'));
 
 const App: React.FC<Props> = ({ history }) => {
@@ -26,14 +28,16 @@ const App: React.FC<Props> = ({ history }) => {
   }, [isLoading]);
 
   return (
-    <div>
-      <Router history={history}>
-        <Suspense fallback={!isLoading && <Loading isOpen />}>
-          <Switch>
-            <Route path="/" component={TasksPageLazy} />
-          </Switch>
-        </Suspense>
-      </Router>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Router history={history}>
+          <Suspense fallback={!isLoading && <Loading isOpen />}>
+            <Switch>
+              <Route path="/" component={TasksPageLazy} />
+            </Switch>
+          </Suspense>
+        </Router>
+      </div>
     </div>
   );
 };

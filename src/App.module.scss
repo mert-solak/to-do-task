@@ -1,0 +1,11 @@
+.container {
+  padding: 24px;
+  height: calc(100vh - #{$header-height});
+  background-color: $darker-background-color;
+}
+
+.content {
+  padding: 24px;
+  height: calc(100vh - #{$header-height} - 48px);
+  background-color: $default-background-color;
+}
