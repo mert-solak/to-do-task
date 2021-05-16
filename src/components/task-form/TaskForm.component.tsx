@@ -12,9 +12,10 @@ import { axiosConfig } from '../../configs';
 import { errorLocale } from '../../locales';
 
 import styles from './TaskForm.module.scss';
+import { taskDefinitions } from '../../definitions';
 
 export const TaskForm: React.FC<Props> = ({ task: taskProp, userName, status, onCreateUpdateFinish }) => {
-  const [task, setTask] = useState<Partial<Props['task']>>(taskProp);
+  const [task, setTask] = useState<Partial<taskDefinitions.Task>>(taskProp);
 
   const axios = useAxios();
   const dispatch = useDispatch();

@@ -1,17 +1,8 @@
-interface Task {
-  _id: string;
-  name: string;
-  userName: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  finishesAt?: string;
-  description?: string;
-}
+import { taskDefinitions, userDefinitions } from '../../definitions';
 
 export interface Props {
-  task?: Task;
-  userName: string;
-  status: string;
+  task?: taskDefinitions.Task;
+  userName: userDefinitions.UserName;
+  status: taskDefinitions.Task['status'];
   onCreateUpdateFinish?: () => void;
 }

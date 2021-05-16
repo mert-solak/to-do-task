@@ -6,11 +6,12 @@ import { momentHelper } from '../../helpers';
 import { Popup, TaskForm } from '../index';
 
 import styles from './Task.module.scss';
+import { taskDefinitions } from '../../definitions';
 
 export const Task: React.FC<Props> = ({ task, userName }) => {
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
 
-  const setStatusDotClass = (finishesAt: string | undefined) => {
+  const setStatusDotClass = (finishesAt: taskDefinitions.Task['finishesAt'] | undefined) => {
     if (!finishesAt) {
       return styles.statusDot;
     }
