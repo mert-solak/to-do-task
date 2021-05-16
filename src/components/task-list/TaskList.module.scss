@@ -1,7 +1,17 @@
 .container {
-  margin-right: 12px;
+  margin-right: 24px;
 }
 
 .title {
+  margin: 0;
+  margin-bottom: 6px;
   text-align: center;
+}
+
+.content {
+  padding: 12px;
+  max-height: calc(100vh - #{$header-height} - 48px - 48px - 24px);
+  overflow-y: auto;
+  background-color: $slightly-darker-background-color;
+  border-radius: $default-border-radius;
 }

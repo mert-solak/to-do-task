@@ -5,7 +5,8 @@
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   border: 1px solid $border-color;
-  border-radius: 12px;
+  border-radius: $default-border-radius;
+  background-color: $default-background-color;
 }
 
 .left {
