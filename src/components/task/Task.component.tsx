@@ -61,28 +61,32 @@ export const Task: React.FC<Props> = ({ task, userName }) => {
 
   return (
     <div>
-      <div
-        className={setContainerClass()}
-        role="button"
-        tabIndex={-1}
-        onKeyDown={handleOnClickTask}
-        onClick={handleOnClickTask}
-        onDragStart={handleOnDragStart}
-        draggable={task.userName === userName}
-      >
-        <div className={styles.left}>
-          <div className={setStatusDotClass(task.finishesAt)} />
-        </div>
-        <div className={styles.middle}>
-          <p className={styles.name}>{task.name}</p>
-          {task.finishesAt && <p className={styles.date}>{momentHelper.formatStringDate(task.finishesAt)}</p>}
-        </div>
-        <div className={styles.right}>
-          <div className={setUserNameWrapperClass()}>
-            <p className={styles.userName}>{task.userName.charAt(0)}</p>
+      {task.userName && (
+        <div
+          className={setContainerClass()}
+          role="button"
+          tabIndex={-1}
+          onKeyDown={handleOnClickTask}
+          onClick={handleOnClickTask}
+          onDragStart={handleOnDragStart}
+          draggable={task.userName === userName}
+        >
+          <div className={styles.left}>
+            <div className={setStatusDotClass(task.finishesAt)} />
+          </div>
+          <div className={styles.middle}>
+            <p className={styles.name}>{task.name}</p>
+            {task.finishesAt && (
+              <p className={styles.date}>{momentHelper.formatStringDate(task.finishesAt)}</p>
+            )}
+          </div>
+          <div className={styles.right}>
+            <div className={setUserNameWrapperClass()}>
+              <p className={styles.userName}>{task.userName.charAt(0)}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Popup isDialogOpen={isTaskFormOpen} onDialogClose={setIsTaskFormOpen} title="Update Task">
         <TaskForm
           task={task}
