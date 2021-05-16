@@ -79,7 +79,7 @@ export const Task: React.FC<Props> = ({ task, userName }) => {
         </div>
         <div className={styles.right}>
           <div className={setUserNameWrapperClass()}>
-            <p className={styles.userName}>{task.userName.charAt(0)}</p>
+            <p className={styles.userName}>{task?.userName?.charAt(0)}</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
 export const env = {
-  API: process.env.API,
-  NODE_ENV: process.env.NODE_ENV,
+  API: 'http://todobackend-env-2.eba-rqh48avs.eu-west-1.elasticbeanstalk.com',
+  NODE_ENV: 'production',
 };

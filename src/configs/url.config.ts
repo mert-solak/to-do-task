@@ -1,7 +1,5 @@
-import { envConfig } from '.';
-
 export const urls = {
-  api: envConfig.env.API,
+  api: 'http://todobackend-env-2.eba-rqh48avs.eu-west-1.elasticbeanstalk.com',
 };
 
 export const routes = {
