@@ -1,16 +1,16 @@
 import { eventDefinitions } from '../definitions';
 
 const on = (eventName: eventDefinitions.EventName, listener: eventDefinitions.Listener): void => {
-  document.addEventListener(eventName, (detail) => listener(detail));
+  document.addEventListener(eventName, (event: any) => listener(event.detail));
 };
 
 const off = (eventName: eventDefinitions.EventName, listener: eventDefinitions.Listener): void => {
-  document.removeEventListener(eventName, (detail) => listener(detail));
+  document.removeEventListener(eventName, (event: any) => listener(event.detail));
 };
 
 const once = (eventName: eventDefinitions.EventName, listener: eventDefinitions.Listener): void => {
-  const handleEventOnce = (event: CustomEvent) => {
-    listener(event.detail);
+  const handleEventOnce = (data: any) => {
+    listener(data);
     off(eventName, handleEventOnce);
   };
 
