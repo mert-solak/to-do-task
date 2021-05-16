@@ -1,5 +1,4 @@
 const Dotenv = require('dotenv-webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const path = require('path');
 const { merge } = require('webpack-merge');
@@ -25,9 +24,6 @@ const devConfig = {
       filename: 'remoteEntry.js',
       exposes: appConfig.exposes,
       shared: packageJson.dependencies,
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
     }),
     new Dotenv({
       path: path.join(__dirname, '../../.dev.env'),
