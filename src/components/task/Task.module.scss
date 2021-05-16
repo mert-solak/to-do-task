@@ -1,0 +1,78 @@
+.container {
+  padding: 12px;
+  margin-bottom: 12px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+}
+
+.statusDot {
+  margin-top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.date {
+  margin: 0;
+  font-size: 12px;
+  color: $lighter-text-color;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+}
+
+.userNameWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid $border-color;
+  border-radius: 50%;
+}
+
+.userName {
+  margin: 0;
+  font-size: 18px;
+}
+
+.makeRed {
+  background-color: $red-color;
+}
+
+.makeOrange {
+  background-color: $orange-color;
+}
+
+.makeBlue {
+  background-color: $blue-color;
+}
+
+.makeBorderGreen {
+  border-color: $green-color;
+}
+
+.makeCursorPointer {
+  cursor: pointer;
+}

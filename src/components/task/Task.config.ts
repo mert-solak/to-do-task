@@ -9,4 +9,5 @@ export interface Props {
     finishesAt?: string;
     description?: string;
   };
+  userName: string;
 }
