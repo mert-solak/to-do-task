@@ -17,7 +17,7 @@ jobs:
         run: |
           touch .env
           echo API=${{ secrets.API }} >> .env
-          echo PUBLIC_DOMAIN=${{ secrets.PUBLIC_DOMAIN }} >> .env
+          echo PRODUCTION_DOMAIN=${{ secrets.PRODUCTION_DOMAIN }} >> .env
 
       - run: npm run build
 
