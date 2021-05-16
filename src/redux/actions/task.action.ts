@@ -11,7 +11,11 @@ export const addTask = (task: reduxTaskDefinitions.State['tasks'][0]) => ({
   payload: task,
 });
 
-export const updateTask = (task: reduxTaskDefinitions.State['tasks'][0]) => ({
+export const updateTask = (
+  task: Partial<reduxTaskDefinitions.State['tasks'][0]> & {
+    _id: reduxTaskDefinitions.State['tasks'][0]['_id'];
+  },
+) => ({
   type: TASK_UPDATE_TASK,
   payload: task,
 });

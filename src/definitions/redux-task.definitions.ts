@@ -16,7 +16,7 @@ export type Action =
     }
   | {
       type: typeof TASK_UPDATE_TASK;
-      payload: taskDefinitions.Task;
+      payload: Partial<taskDefinitions.Task> & { _id: taskDefinitions.Task['_id'] };
     }
   | {
       type: typeof TASK_REMOVE_TASK;
