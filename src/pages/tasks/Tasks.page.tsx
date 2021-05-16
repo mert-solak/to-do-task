@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAxios } from '@mertsolak/axios-helper';
 
@@ -8,8 +8,13 @@ import { taskService } from '../../services';
 import { taskActions } from '../../redux/actions';
 import { axiosConfig } from '../../configs';
 import { errorLocale } from '../../locales';
+import { GroupedTasks } from './Tasks.config';
+
+import styles from './Tasks.module.scss';
 
 const TasksPage: React.FC = () => {
+  const [groupedTasks, setGroupedTasks] = useState<GroupedTasks>({});
+
   const axios = useAxios();
   const dispatch = useDispatch();
 
@@ -17,6 +22,7 @@ const TasksPage: React.FC = () => {
   const taskState = useSelector((rootState: reduxRootDefinitions.RootState) => rootState.taskState);
 
   const { userName } = userState;
+  const { tasks } = taskState;
 
   useEffect(() => {
     const getTasks = async () => {
@@ -36,7 +42,27 @@ const TasksPage: React.FC = () => {
     }
   }, [userName]);
 
-  return <TaskList taskList={taskState.tasks} />;
+  useEffect(() => {
+    const newGroupedTasks: GroupedTasks = {};
+
+    tasks.forEach((task) => {
+      if (newGroupedTasks[task.status]) {
+        newGroupedTasks[task.status].push(task);
+      } else {
+        newGroupedTasks[task.status] = [task];
+      }
+    });
+
+    setGroupedTasks(newGroupedTasks);
+  }, [tasks]);
+
+  return (
+    <div className={styles.container}>
+      {Object.keys(groupedTasks).map((status) => (
+        <TaskList key={status} taskList={groupedTasks[status]} status={status} />
+      ))}
+    </div>
+  );
 };
 
 export default TasksPage;
